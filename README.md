@@ -12,24 +12,24 @@ daily notes
 
 1. 循环特征消减(Recursive Feature Elimination)
 作为一种特征选择方法，其工作原理是：循环地移除变量和建立模型，通过模型的准确率来评估变量对模型的贡献。以下代码使用UCI的Iris数据集，使用sklearn.feature_selection的RFE方法来实现该方法。
-from sklearn import datasets
-from sklearn.feature_selection import RFE
-from sklearn.linear_model import LogisticRegression
-dataset =datasets.load_iris() # laod iris dataset
-model = LogisticRegression() # build logistic regression model
-rfe = RFE(model,3) # limit number of variables to three
-rfe = rfe.fit(dataset.data,dataset.target)
-print(rfe.support_) 
-print(rfe.ranking_)
+      from sklearn import datasets
+      from sklearn.feature_selection import RFE
+      from sklearn.linear_model import LogisticRegression
+      dataset =datasets.load_iris() # laod iris dataset
+      model = LogisticRegression() # build logistic regression model
+      rfe = RFE(model,3) # limit number of variables to three
+      rfe = rfe.fit(dataset.data,dataset.target)
+      print(rfe.support_) 
+      print(rfe.ranking_)
 
 2. 特征重要性评级 (feature importance ranking)
 “组合决策树算法”（例如Random Forest or Extra Trees）可以计算每一个属性的重要性。重要性的值可以帮助我们选择出重要的特征。以下代码使用UCI的Iris数据集，使用sklearn.metrics和sklearn.ensemble 的ExtraTreesClassifier来实现该算法。
 
-from sklearn import datasets
-from sklearn import metrics
-from sklearn.ensemble import ExtraTreesClassifier
-dataset =datasets.load_iris() # laod iris dataset
-model = ExtraTreesClassifier() # build extra tree model
-model.fit(dataset.data,dataset.target)
-print(model.feature_importances_) #display importance of each variables
+      from sklearn import datasets
+      from sklearn import metrics
+      from sklearn.ensemble import ExtraTreesClassifier
+      dataset =datasets.load_iris() # laod iris dataset
+      model = ExtraTreesClassifier() # build extra tree model
+      model.fit(dataset.data,dataset.target)
+      print(model.feature_importances_) #display importance of each variables
 
